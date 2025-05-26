@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Navbar with Dropdown and Slider</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    /* .navbar {
+      background-color: #000;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      position: relative;
+    }
+
+    .navbar .logo img {
+      height: 60px;
+      background-color: white;
+      border-radius: 50%;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      position: relative;
+    }
+
+    .nav-links li {
+      position: relative;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #fff;
+      transition: color 0.3s ease;
+      padding: 10px;
+      display: block;
+      font-size: 20px;
+    }
+
+    .nav-links li a:hover {
+      color: #00f7ff;
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #111;
+      min-width: 160px;
+      z-index: 1000;
+    }
+
+    .dropdown a {
+      padding: 10px;
+      display: block;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .dropdown a:hover {
+      background-color: #222;
+      color: #00f7ff;
+    }
+
+    .nav-links li:hover .dropdown {
+      display: block;
+    }
+
+    .menu-icon, .close-icon {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        flex-direction: column;
+        background-color: #000;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        display: none;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-icon {
+        display: block;
+      }
+
+      .close-icon {
+        display: block;
+        align-self: flex-end;
+        padding: 10px;
+      }
+
+      .dropdown {
+        position: static;
+      }
+    } */
+
+    
+
+     body {
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navbar {
+      background-color: #000;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      position: relative;
+      flex-wrap: wrap;
+    }
+
+    .navbar .logo img {
+      height: 50px;
+      background-color: white;
+      border-radius: 50%;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin: 0;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #fff;
+      padding: 10px;
+      display: block;
+      font-size: 18px;
+    }
+
+    .nav-links li a:hover {
+      color: #00f7ff;
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      background-color: #111;
+      min-width: 160px;
+      z-index: 1000;
+      overflow: hidden;
+    }
+
+    .dropdown a {
+      padding: 10px;
+      color: #fff;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown a:hover {
+      background-color: #222;
+      color: #00f7ff;
+    }
+
+    .nav-links li:hover .dropdown {
+      display: block;
+    }
+
+    .menu-icon, .close-icon {
+      display: none;
+      font-size: 26px;
+      cursor: pointer;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .menu-icon {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #000;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 10px 0;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .close-icon {
+        display: block;
+        align-self: flex-end;
+        margin: 10px 20px;
+      }
+
+      .dropdown {
+        position: static;
+      }
+    } 
+
+     /* nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 15px;
+    }
+
+    .nav-links li a {
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 12px;
+      transition: background 0.3s;
+    }
+
+    .nav-links li a:hover {
+      background: #555;
+      border-radius: 4px;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background: #444;
+      top: 100%;
+      left: 0;
+      min-width: 150px;
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: #fff;
+      padding: 10px;
+      display: block;
+      text-decoration: none;
+    }
+
+    .dropdown-content a:hover {
+      background: #666;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .menu-icon,
+    .close-icon {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+    } */
+
+    /* Slider styles */
+    .slider {
+      position: relative;
+      max-width: 95%;
+      overflow: hidden;
+      margin: 20px auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      display: none; /* Hidden for mobile/tablet */
+    }
+
+    .slider img {
+      position: absolute;
+      top: 0;
+      left: 100%;
+      width: 100%;
+      opacity: 0;
+      transition: all 0.8s ease;
+    }
+
+    .slider img.active {
+      left: 0;
+      opacity: 1;
+      position: relative;
+    }
+
+    .slider .prev,
+    .slider .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      border-radius: 5px;
+      z-index: 1;
+    }
+
+    .slider .prev:hover,
+    .slider .next:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .slider .prev {
+      left: 15px;
+    }
+
+    .slider .next {
+      right: 15px;
+    }
+
+    @media (min-width: 769px) {
+      .slider {
+        display: block;
+      }
+    }
+
+
+   .ielts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+    
+    
+  }
+
+  .ielts-box {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    animation: fadeInUp 0.8s ease forwards;
+    opacity: 0;
+  }
+
+  .ielts-box img {
+    width: 100%;
+    height: auto;
+    max-height: 300px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-bottom: 15px;
+  }
+
+  .ielts-box h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+
+  .ielts-box p {
+    color: #555;
+  }
+
+  .ielts-box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+    .spoken-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1200px;
+    margin: auto;
+    flex-wrap: wrap;
+  }
+
+  .spoken-text {
+    flex: 1 1 400px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .spoken-text h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+
+  .spoken-image {
+    flex: 1 1 300px;
+    text-align: center;
+  }
+
+  .spoken-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+
+
+
+/* FOOTER */
+  .site-footer {
+    background-color: #000;
+    color: #fff;
+    padding: 40px 20px 20px;
+    font-family: Arial, sans-serif;
+    animation: fadeIn 1s ease-in;
+  }
+
+  .footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: auto;
+    padding-bottom: 20px;
+  }
+
+  .footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #00f7ff;
+    display: inline-block;
+    padding-bottom: 5px;
+    transition: color 0.3s ease;
+  }
+
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .footer-section ul li {
+    margin-bottom: 10px;
+  }
+
+  .footer-section ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .footer-section ul li a:hover {
+    color: #00f7ff;
+  }
+
+  .social-icons a {
+    display: inline-block;
+    margin-right: 10px;
+    transition: transform 0.3s ease;
+  }
+
+  .social-icons img {
+    width: 28px;
+    height: 28px;
+  }
+
+  .social-icons a:hover {
+    transform: scale(1.2);
+  }
+
+  .footer-bottom {
+    text-align: center;
+    border-top: 1px solid #333;
+    padding-top: 15px;
+    font-size: 14px;
+    color: #ccc;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 600px) {
+    .social-icons {
+      justify-content: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+  }
+
+
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="logo/photos/LOGO SAI.png" alt="Logo">
+    </div>
+    <div class="menu-icon" id="menu-icon">☰</div>
+    <ul class="nav-links" id="nav-links">
+      <div class="close-icon" id="close-icon">✖</div>
+      <li><a href="#">Home</a></li>
+      <li>
+        <a href="#">Courses</a>
+        <div class="dropdown">
+          <a href="#">IELTS</a>
+          <a href="#">PTE</a>
+          <a href="#">Spoken</a>
+        </div>
+      </li>
+      <li>
+        <a href="#">Visa</a>
+        <div class="dropdown">
+          <a href="#">Study Visa</a>
+          <a href="#">Tourist Visa</a>
+        </div>
+      </li>
+      <li><a href="addmissionform.html" target="_blank">Admission</a></li>
+      <li><a href="#">Contact Me</a></li>
+    </ul>
+  </nav> 
+
+  <section class="slider" id="slider">
+    <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+    <button class="next" onclick="changeSlide(1)">&#10095;</button>
+    <img src="logo/photos/slider image.jpg" class="active" alt="Slide 1">
+    <img src="logo/photos/slider image.jpg" alt="Slide 2">
+    <img src="logo/photos/PTE KAR FOR BAFIKAR.jpg" alt="Slide 3">
+  </section>
+<hr>
+  <section id="ielts-section" style="padding: 40px 20px; background-color: #f9f9f9;">
+  <h2 style="text-align: center; font-size: 28px; margin-bottom: 30px;">IELTS</h2>
+  <div class="ielts-grid">
+    <div class="ielts-box"><img src="logo/STUDENTS/WhatsApp Image 2025-05-25 at 5.35.26 PM.jpeg" alt="Student 1"><h3>Ravi Kumar</h3><p>Band: 8.0</p></div>
+    <div class="ielts-box"><img src="logo/STUDENTS/WhatsApp Image 2025-05-25 at 5.36.33 PM.jpeg" alt="Student 2"><h3>Simran Kaur</h3><p>Band: 7.5</p></div>
+    <div class="ielts-box"><img src="logo/STUDENTS/WhatsApp Image 2025-05-25 at 5.36.34 PM (1).jpeg" alt="Student 3"><h3>Aman Deep</h3><p>Band: 8.5</p></div>
+    <div class="ielts-box extra-box hidden"><img src="logo/STUDENTS/WhatsApp Image 2025-05-25 at 5.36.34 PM.jpeg" alt="Student 4"><h3>Priya Sharma</h3><p>Band: 7.0</p></div>
+    <div class="ielts-box extra-box hidden"><img src="logo/STUDENTS/WhatsApp Image 2025-05-25 at 5.36.35 PM.jpeg" alt="Student 5"><h3>Rajveer Singh</h3><p>Band: 8.0</p></div>
+    <div class="ielts-box extra-box hidden"><img src="logo/STUDENTS/WhatsApp Image 2025-05-25 at 5.36.34 PM (1).jpeg" alt="Student 6"><h3>Anita Joshi</h3><p>Band: 7.5</p></div>
+  </div>
+  <div style="text-align: center; margin-top: 20px;">
+    <button id="showMoreBtn" style="padding: 10px 20px; font-size: 16px; cursor: pointer; border: none; background-color: #000; color: #fff; border-radius: 5px; transition: background-color 0.3s ease;">See More</button>
+  </div>
+</section>
+<hr>
+  <section id="pte-section" style="padding: 40px 20px; background-color: #f9f9f9;">
+  <h2 style="text-align: center; font-size: 28px; margin-bottom: 30px;">PTE</h2>
+  <div class="ielts-grid">
+    <div class="ielts-box"><img src="logo/STUDENTS/WhatsApp Image 2025-05-25 at 5.35.26 PM.jpeg" alt="Student 1"><h3>Ravi Kumar</h3><p>Band: 8.0</p></div>
+    <div class="ielts-box"><img src="logo/STUDENTS/WhatsApp Image 2025-05-25 at 5.36.33 PM.jpeg" alt="Student 2"><h3>Simran Kaur</h3><p>Band: 7.5</p></div>
+    <div class="ielts-box"><img src="logo/STUDENTS/WhatsApp Image 2025-05-25 at 5.36.34 PM (1).jpeg" alt="Student 3"><h3>Aman Deep</h3><p>Band: 8.5</p></div>
+    <div class="ielts-box extra-box hidden"><img src="logo/STUDENTS/WhatsApp Image 2025-05-25 at 5.36.34 PM.jpeg" alt="Student 4"><h3>Priya Sharma</h3><p>Band: 7.0</p></div>
+    <div class="ielts-box extra-box hidden"><img src="logo/STUDENTS/WhatsApp Image 2025-05-25 at 5.36.35 PM.jpeg" alt="Student 5"><h3>Rajveer Singh</h3><p>Band: 8.0</p></div>
+    <div class="ielts-box extra-box hidden"><img src="logo/STUDENTS/WhatsApp Image 2025-05-25 at 5.36.34 PM (1).jpeg" alt="Student 6"><h3>Anita Joshi</h3><p>Band: 7.5</p></div>
+  </div>
+  <div style="text-align: center; margin-top: 20px;">
+    <button id="showMoreBtn" style="padding: 10px 20px; font-size: 16px; cursor: pointer; border: none; background-color: #000; color: #fff; border-radius: 5px; transition: background-color 0.3s ease;">See More</button>
+  </div>
+</section>
+<hr>
+<section id="spoken-english" style="padding: 40px 20px; background-color: #f1f1f1;">
+  <div class="spoken-container">
+    <div class="spoken-text">
+      <h2>Spoken English</h2>
+      <p>
+        Our Spoken English program is designed to enhance your communication skills with a focus on fluency, confidence, and practical usage. Whether you're preparing for interviews, presentations, or everyday conversation, our expert-guided sessions will empower you to speak English effectively.
+      </p>
+      <p>
+        The course covers grammar, vocabulary, pronunciation, and interactive speaking practice tailored for all levels – beginner to advanced.
+      </p>
+    </div>
+    <div class="spoken-image">
+      <img src="logo/STUDENTS/spoken.jpg" alt="Spoken English Training">
+    </div>
+  </div>
+</section>
+<hr>
+
+  <section id="visa-section" style="padding: 40px 20px; background-color: #f9f9f9;">
+  <h2 style="text-align: center; font-size: 28px; margin-bottom: 30px;">VISA SUCCESS</h2>
+  <div class="ielts-grid">
+    <div class="ielts-box"><img src="logo/STUDENTS/WhatsApp Image 2025-05-25 at 5.35.26 PM.jpeg" alt="Student 1"><h3>Ravi Kumar</h3><p>Band: 8.0</p></div>
+    <div class="ielts-box"><img src="logo/STUDENTS/WhatsApp Image 2025-05-25 at 5.36.33 PM.jpeg" alt="Student 2"><h3>Simran Kaur</h3><p>Band: 7.5</p></div>
+    <div class="ielts-box"><img src="logo/STUDENTS/WhatsApp Image 2025-05-25 at 5.36.34 PM (1).jpeg" alt="Student 3"><h3>Aman Deep</h3><p>Band: 8.5</p></div>
+    <div class="ielts-box extra-box hidden"><img src="logo/STUDENTS/WhatsApp Image 2025-05-25 at 5.36.34 PM.jpeg" alt="Student 4"><h3>Priya Sharma</h3><p>Band: 7.0</p></div>
+    <div class="ielts-box extra-box hidden"><img src="logo/STUDENTS/WhatsApp Image 2025-05-25 at 5.36.35 PM.jpeg" alt="Student 5"><h3>Rajveer Singh</h3><p>Band: 8.0</p></div>
+    <div class="ielts-box extra-box hidden"><img src="logo/STUDENTS/WhatsApp Image 2025-05-25 at 5.36.34 PM (1).jpeg" alt="Student 6"><h3>Anita Joshi</h3><p>Band: 7.5</p></div>
+  </div>
+  <div style="text-align: center; margin-top: 20px;">
+    <button id="showMoreBtn" style="padding: 10px 20px; font-size: 16px; cursor: pointer; border: none; background-color: #000; color: #fff; border-radius: 5px; transition: background-color 0.3s ease;">See More</button>
+  </div>
+</section>
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-section">
+      <h3>Courses</h3>
+      <ul>
+        <li><a href="#">IELTS</a></li>
+        <li><a href="#">PTE</a></li>
+        <li><a href="#">Spoken English</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Visa Services</h3>
+      <ul>
+        <li><a href="#">Student Visa</a></li>
+        <li><a href="#">Tourist Visa</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="https://instagram.com" target="_blank"><img src="logo/STUDENTS/ICON LOGO/instagram.png" alt="Instagram"></a>
+        <a href="https://facebook.com" target="_blank"><img src="logo/STUDENTS/ICON LOGO/facebook.png" alt="Facebook"></a>
+        <a href="https://twitter.com" target="_blank"><img src="logo/STUDENTS/ICON LOGO/twitter.png" alt="X"></a>
+        <a href="https://youtube.com" target="_blank"><img src="logo/STUDENTS/ICON LOGO/youtube.png" alt="YouTube"></a>
+      </div>
+    </div>
+    <div class="footer-section">
+      <h3>Contact</h3>
+      <p>Address: Sai Step 2 Abroad, Main Road, City, State, Pincode</p>
+      <p>Phone: +91-9876543210</p>
+      <p>Email: info@saisteptoabroad.com</p>
+      <p>Website: www.saist2abroad.com</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Sai Step 2 Abroad. All rights reserved.</p>
+  </div>
+
+  <script>
+    //    const menuIcon = document.getElementById("menu-icon");
+    // const navLinks = document.getElementById("nav-links");
+    // const closeIcon = document.getElementById("close-icon");
+
+    // menuIcon.addEventListener("click", () => {
+    //   navLinks.classList.add("active");
+    // });
+
+    // closeIcon.addEventListener("click", () => {
+    //   navLinks.classList.remove("active");
+    // });
+ 
+    // // Slider logic
+    // let currentSlide = 0;
+    // const slides = document.querySelectorAll(".slider img");
+
+    // function showSlide(index) {
+    //   slides.forEach((slide, i) => {
+    //     slide.classList.remove("active");
+    //     if (i === index) {
+    //       slide.classList.add("active");
+    //     }
+    //   });
+    // }
+
+    // function changeSlide(direction) {
+    //   currentSlide += direction;
+    //   if (currentSlide < 0) currentSlide = slides.length - 1;
+    //   else if (currentSlide >= slides.length) currentSlide = 0;
+    //   showSlide(currentSlide);
+    // }
+
+    // // Show More functionality
+    // document.querySelectorAll('#showMoreBtn').forEach((btn) => {
+    //   btn.addEventListener("click", function () {
+    //     const section = btn.closest("section");
+    //     const extraBoxes = section.querySelectorAll(".extra-box");
+    //     extraBoxes.forEach((box) => box.classList.toggle("hidden"));
+    //     btn.textContent = btn.textContent === "See More" ? "See Less" : "See More";
+    //   });
+    // });
+
+const menuIcon = document.getElementById("menu-icon");
+    const closeIcon = document.getElementById("close-icon");
+    const navLinks = document.getElementById("nav-links");
+
+    menuIcon.addEventListener("click", () => {
+      navLinks.classList.add("active");
+    });
+
+    closeIcon.addEventListener("click", () => {
+      navLinks.classList.remove("active");
+    });
+
+    // Slider functionality
+    let currentSlide = 0;
+    const slides = document.querySelectorAll(".slider img");
+
+    function changeSlide(direction) {
+      slides[currentSlide].classList.remove("active");
+      currentSlide = (currentSlide + direction + slides.length) % slides.length;
+      slides[currentSlide].classList.add("active");
+    }
+
+    // See More Toggle for IELTS and PTE sections
+    document.querySelectorAll("#showMoreBtn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll(".extra-box").forEach(box => box.classList.toggle("hidden"));
+        btn.textContent = btn.textContent === "See More" ? "See Less" : "See More";
+      });
+    });
+
+  </script>
+</body>
+</html>

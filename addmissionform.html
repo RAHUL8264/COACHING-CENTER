@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Enquiry Form</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .navbar {
+      background-color: #000;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      position: relative;
+      flex-wrap: wrap;
+    }
+
+    .navbar .logo img {
+      height: 50px;
+      background-color: white;
+      border-radius: 50%;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      margin: 0;
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #fff;
+      padding: 10px;
+      display: block;
+      font-size: 18px;
+    }
+
+    .nav-links li a:hover {
+      color: #00f7ff;
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      background-color: #111;
+      min-width: 160px;
+      z-index: 1000;
+    }
+
+    .dropdown a {
+      padding: 10px;
+      color: #fff;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown a:hover {
+      background-color: #222;
+      color: #00f7ff;
+    }
+
+    .nav-links li:hover .dropdown {
+      display: block;
+    }
+
+    .menu-icon, .close-icon {
+      display: none;
+      font-size: 26px;
+      cursor: pointer;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .menu-icon {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #000;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        padding: 10px 0;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .close-icon {
+        display: block;
+        align-self: flex-end;
+        margin: 10px 20px;
+      }
+
+      .dropdown {
+        position: static;
+      }
+    }
+
+    .form-container {
+      background: #fff;
+      margin: 20px auto;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      max-width: 500px;
+      width: 90%;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      margin-top: 1rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 0.6rem;
+      margin-top: 0.5rem;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    button {
+      margin-top: 1.5rem;
+      width: 100%;
+      padding: 0.8rem;
+      background-color: #00b894;
+      color: #fff;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #019875;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">
+      <img src="logo/photos/LOGO SAI.png" alt="Logo">
+    </div>
+    <div class="menu-icon" id="menu-icon">☰</div>
+    <ul class="nav-links" id="nav-links">
+      <div class="close-icon" id="close-icon">✖</div>
+      <li><a href="#">Home</a></li>
+      <li>
+        <a href="#">Courses</a>
+        <div class="dropdown">
+          <a href="#">IELTS</a>
+          <a href="#">PTE</a>
+          <a href="#">Spoken</a>
+        </div>
+      </li>
+      <li>
+        <a href="#">Visa</a>
+        <div class="dropdown">
+          <a href="#">Study Visa</a>
+          <a href="#">Tourist Visa</a>
+        </div>
+      </li>
+      <li><a href="#">Admission</a></li>
+      <li><a href="#">Contact Me</a></li>
+    </ul>
+  </nav>
+
+  <div class="form-container">
+    <h2>Student Enquiry Form</h2>
+    <form action="https://formspree.io/f/xldbylrn" method="POST">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="mobile">Mobile Number:</label>
+      <input type="tel" id="mobile" name="mobile" required pattern="[0-9]{10}" maxlength="10" />
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required />
+
+      <div class="checkbox-row">
+        <input type="checkbox" id="courseCheck" name="interest" value="Course" onclick="toggleFields()" />
+        <label for="courseCheck">Course</label>
+        <input type="checkbox" id="visaCheck" name="interest" value="Visa Service" onclick="toggleFields()" />
+        <label for="visaCheck">Visa Service</label>
+      </div>
+
+      <div id="courseField">
+        <label for="course">Select Course:</label>
+        <select id="course" name="course">
+          <option value="">-- Select --</option>
+          <option value="IELTS">IELTS</option>
+          <option value="PTE">PTE</option>
+          <option value="Spoken English">Spoken English</option>
+        </select>
+      </div>
+
+      <div id="visaField">
+        <label for="visa">Select Visa Type:</label>
+        <select id="visa" name="visa">
+          <option value="">-- Select --</option>
+          <option value="Study Visa">Study Visa</option>
+          <option value="Tourist Visa">Tourist Visa</option>
+        </select>
+      </div>
+
+      <label for="query">Any Query:</label>
+      <textarea id="query" name="query" rows="4" placeholder="Write your query here..."></textarea>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    const menuIcon = document.getElementById("menu-icon");
+    const navLinks = document.getElementById("nav-links");
+    const closeIcon = document.getElementById("close-icon");
+
+    menuIcon.addEventListener("click", () => {
+      navLinks.classList.add("active");
+    });
+
+    closeIcon.addEventListener("click", () => {
+      navLinks.classList.remove("active");
+    });
+
+    const courseCheck = document.getElementById("courseCheck");
+    const visaCheck = document.getElementById("visaCheck");
+    const courseField = document.getElementById("courseField");
+    const visaField = document.getElementById("visaField");
+
+    function toggleFields() {
+      courseField.style.display = courseCheck.checked ? "block" : "none";
+      visaField.style.display = visaCheck.checked ? "block" : "none";
+    }
+
+    window.addEventListener('DOMContentLoaded', toggleFields);
+  </script>
+</body>
+</html>
